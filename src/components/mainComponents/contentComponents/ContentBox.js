@@ -1,4 +1,4 @@
-export const MovieBox = (props) => {
+export const ContentBox = (props) => {
 
     const imageUrl = `https://image.tmdb.org/t/p/w500`;
 

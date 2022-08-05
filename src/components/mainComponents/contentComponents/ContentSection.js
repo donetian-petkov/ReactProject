@@ -1,8 +1,8 @@
-import {MovieSection} from "./MovieSection";
+import {ContentArea} from "./ContentArea";
 import {useEffect, useState} from "react";
 import * as movieService from '../../../services/movieService'
 
-export const MovieContent = () => {
+export const ContentSection = () => {
 
     const [moviesInTheatre, setMoviesInTheatre] = useState([]);
     const [moviesTopRated, setMoviesTopRated] = useState([]);
@@ -28,9 +28,9 @@ export const MovieContent = () => {
 
     return (
         <div id="content">
-            <MovieSection title='In Theaters' movies={moviesInTheatre}/>
-            <MovieSection title='Top Rated' movies={moviesTopRated}/>
-            <MovieSection title='Upcoming' movies={moviesUpcoming}/>
+            <ContentArea title='In Theaters' movies={moviesInTheatre}/>
+            <ContentArea title='Top Rated' movies={moviesTopRated}/>
+            <ContentArea title='Upcoming' movies={moviesUpcoming}/>
         </div>
     )
 }
