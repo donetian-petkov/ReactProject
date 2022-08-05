@@ -1,6 +1,5 @@
 const movieApiUrl = 'https://api.themoviedb.org/3/movie';
-const movieNewsUrl = 'https://newsapi.org/v2/everything?q=Movie&sortBy=publishedAt&apiKey=cc697bdf9b2d473f97c152659fde3fc9';
-
+const articleUrl = 'https://newsapi.org/v2/everything?sortBy=publishedAt&apiKey=cc697bdf9b2d473f97c152659fde3fc9';
 
 export const getMoviesByCriteria = async (criteria) => {
 
@@ -16,9 +15,9 @@ export const getMoviesByCriteria = async (criteria) => {
 
 }
 
-export const getNews = async () => {
+export const getArticles = async (criteria) => {
 
-    const response = await fetch(movieNewsUrl);
+    const response = await fetch(`${articleUrl}&q=${criteria}`);
 
     const result = await response.json();
 
