@@ -7,7 +7,8 @@ export const NewsBox = (props) => {
             <p className="date">{date}</p>
             <h4>{props.news.title}</h4>
             <p>&quot;{props.news.description}</p>
-            <a href={props.news.url}>Read more</a></div>
+            <a href={props.news.url}>Read more</a>
+        </div>
     )
 
 }
