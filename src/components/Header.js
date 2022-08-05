@@ -1,31 +1,27 @@
+import {Link} from "react-router-dom";
+
 export const Header = () => {
 
     return (
         <div id="header">
-            <h1 id="logo"><a href="#">Movies For All</a></h1>
-           {/* <div className="social"><span>FOLLOW US ON:</span>
-                <ul>
-                    <li><a className="twitter" href="#">twitter</a></li>
-                    <li><a className="facebook" href="#">facebook</a></li>
-                    <li><a className="vimeo" href="#">vimeo</a></li>
-                    <li><a className="rss" href="#">rss</a></li>
-                </ul>
-            </div>*/}
+            <h1 id="logo"><Link to="/">HOME</Link></h1>
             <div id="navigation">
                 <ul>
-                    <li><a className="active" href="#">HOME</a></li>
-                    <li><a href="#">IN THEATERS</a></li>
-                    <li><a href="#">COMING SOON</a></li>
-                    <li><a href="#">NEWS</a></li>
-                    <li><a href="#">LOGIN</a></li>
-                    <li><a href="#">REGISTER</a></li>
+                    <li><Link to="/">HOME</Link></li>
+                    <li><Link to="/now_playing">IN THEATERS</Link></li>
+                    <li><Link to="/coming_soon">COMING SOON</Link></li>
+                    <li><Link to="/news">NEWS</Link></li>
+                    <li><Link to="/login">LOGIN</Link></li>
+                    <li><Link to="/register">REGISTER</Link></li>
+                    <li><Link to="/logout">LOGOUT</Link></li>
                 </ul>
             </div>
             <div id="sub-navigation">
                 <ul>
-                    <li><a href="#">SHOW ALL</a></li>
-                    <li><a href="#">TOP RATED</a></li>
-                    <li><a href="#">MOST COMMENTED</a></li>
+                    <li><Link to="/ratings">YOUR RATINGS</Link></li>
+                    <li><Link to="/comments">YOUR COMMENTS</Link></li>
+                    <li><Link to="/favourites">YOUR FAVOURITES</Link></li>
+                    <li><Link to="/movies">SHOW ALL MOVIES</Link></li>
                 </ul>
                 <div id="search">
                     <form action="#" method="get" acceptCharset="utf-8">
