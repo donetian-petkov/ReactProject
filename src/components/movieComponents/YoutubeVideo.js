@@ -6,8 +6,8 @@ export const YoutubeVideo = (props) => {
     return (
         <div className={`${styles['video-responsive']}`}>
             <iframe
-                width="853"
-                height="480"
+                width="425"
+                height="240"
                 src={`https://www.youtube.com/embed/${props.embedId}`}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

@@ -8,7 +8,7 @@ export const MovieDetails = (props) => {
     const { movieId } = useParams();
 
     const [movie, setMovie] = useState({});
-    const [ trailerId, setTrailerId ] = useState('');
+    const [trailerId, setTrailerId] = useState('');
 
     useEffect(() => {
 
@@ -17,7 +17,7 @@ export const MovieDetails = (props) => {
 
         movieService.getMovieInfo(movieId,'/videos')
             .then(videos => {
-                setTrailerId(videos.results[0].key);
+                setTrailerId(videos.results[videos.results.length-1].key);
             })
     },[]);
 
@@ -31,18 +31,14 @@ export const MovieDetails = (props) => {
             <div className='content'>
                 <h1>{movie?.original_title}</h1>
                 <br/>
-                <p>Description: {movie?.overview}</p>
+                <h3>Description: </h3> <p>{movie?.overview}</p>
                 <br />
-                <p>Trailer:</p>
+                <h3>Release Date:</h3> <p>{movie?.release_date}</p>
+                <br />
+                <h3>Trailer:</h3>
                 <YoutubeVideo embedId={trailerId} />
 
             </div>
-            <div className="rating">
-                <p>RATING</p>
-                <div className="stars">
-                    <div className="stars-in"></div>
-                </div>
-                <span className="comments">12</span></div>
         </div>
     )
 
