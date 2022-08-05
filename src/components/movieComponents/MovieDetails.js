@@ -1,16 +1,24 @@
 import { useParams } from 'react-router';
 import {useEffect, useState} from "react";
 import * as movieService from '../../services/movieService'
+import {YoutubeVideo} from "./YoutubeVideo";
 
 export const MovieDetails = (props) => {
 
     const { movieId } = useParams();
 
     const [movie, setMovie] = useState({});
+    const [ trailerId, setTrailerId ] = useState('');
 
     useEffect(() => {
-        movieService.getMovie(movieId)
+
+        movieService.getMovieInfo(movieId)
             .then(movie => setMovie(movie));
+
+        movieService.getMovieInfo(movieId,'/videos')
+            .then(videos => {
+                setTrailerId(videos.results[0].key);
+            })
     },[]);
 
     const imageUrl = `https://image.tmdb.org/t/p/w500`;
@@ -23,7 +31,11 @@ export const MovieDetails = (props) => {
             <div className='content'>
                 <h1>{movie?.original_title}</h1>
                 <br/>
-                <p>{movie?.overview}</p>
+                <p>Description: {movie?.overview}</p>
+                <br />
+                <p>Trailer:</p>
+                <YoutubeVideo embedId={trailerId} />
+
             </div>
             <div className="rating">
                 <p>RATING</p>
