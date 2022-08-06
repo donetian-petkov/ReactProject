@@ -34,7 +34,7 @@ export const MovieDetails = (props) => {
                 <h4>Description: </h4> <p>{movie?.overview}</p>
 
                 <h4>Release Date:</h4> <p>{movie?.release_date}</p>
-   
+
                 <h4>Trailer:</h4>
                 <YoutubeVideo embedId={trailerId} />
 
