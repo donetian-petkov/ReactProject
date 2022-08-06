@@ -12,18 +12,17 @@ export const Header = () => {
                     <li><Link to="/coming_soon">COMING SOON</Link></li>
                     <li><Link to="/reviews">REVIEWS</Link></li>
                     <li><Link to="/news">NEWS</Link></li>
-                    <li><Link to="/login">LOGIN</Link></li>
-                    <li><Link to="/register">REGISTER</Link></li>
+                    <li><Link to="/login">LOGIN/REGISTER</Link></li>
                     <li><Link to="/logout">LOGOUT</Link></li>
                 </ul>
             </div>
             <div id="sub-navigation">
-                <ul>
+                {/*<ul>
                     <li><Link to="/ratings">YOUR RATINGS</Link></li>
                     <li><Link to="/comments">YOUR COMMENTS</Link></li>
                     <li><Link to="/favourites">YOUR FAVOURITES</Link></li>
                     <li><Link to="/movies">SHOW ALL MOVIES</Link></li>
-                </ul>
+                </ul>*/}
                 <div id="search">
                     <form action="#" method="get" acceptCharset="utf-8">
                         <label htmlFor="search-field">SEARCH</label>
