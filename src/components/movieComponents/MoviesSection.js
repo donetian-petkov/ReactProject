@@ -1,6 +1,7 @@
 import {useContext, useEffect, useState} from "react";
 import * as movieService from "../../services/movieService";
 import {ContentBox} from "../mainComponents/contentComponents/ContentBox";
+import './MovieSection.css';
 
 export const MoviesSection = (props) => {
 

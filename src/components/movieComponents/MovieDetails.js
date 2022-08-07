@@ -3,15 +3,18 @@ import {useEffect, useState} from "react";
 import * as movieService from '../../services/movieService';
 import './MovieDetails.css';
 import {YoutubeVideo} from "./YoutubeVideo";
-import {Rating, Typography} from "@mui/material";
-import {number} from "prop-types";
+import {Rating, styled, Typography} from "@mui/material";
+
 
 
 export const MovieDetails = (props) => {
 
+    const imageUrl = `https://image.tmdb.org/t/p/w500`;
     const {movieId} = useParams();
     const [movie, setMovie] = useState({});
     const [trailerId, setTrailerId] = useState('');
+    const [value, setValue] = useState(2);
+
 
     useEffect(() => {
 
@@ -24,7 +27,15 @@ export const MovieDetails = (props) => {
             })
     }, []);
 
-    const imageUrl = `https://image.tmdb.org/t/p/w500`;
+
+    const StyledRating = styled(Rating)({
+        '& .MuiRating-iconFilled': {
+            color: '#faaf00',
+        },
+        '& .MuiRating-iconHover': {
+            color: '#ffe500',
+        },
+    });
 
     return (
 
@@ -38,6 +49,11 @@ export const MovieDetails = (props) => {
                     <p className="card-text">{movie?.overview}</p>
                     <a href={`https://www.imdb.com/title/${movie?.imdb_id}`} className="card-link">IMDb Link</a>
                 </div>
+                <StyledRating
+                    value={movie?.vote_average}
+                    readOnly
+                    max={10}
+                />
             </div>
 
     )
