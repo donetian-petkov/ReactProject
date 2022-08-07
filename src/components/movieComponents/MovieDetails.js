@@ -5,7 +5,6 @@ import './MovieDetails.css';
 import {YoutubeVideo} from "./YoutubeVideo";
 import {Rating, Typography} from "@mui/material";
 import {number} from "prop-types";
-import BasicRating from "./BasicRating";
 
 
 export const MovieDetails = (props) => {

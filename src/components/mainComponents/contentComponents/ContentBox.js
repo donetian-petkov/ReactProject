@@ -18,7 +18,7 @@ export const ContentBox = (props) => {
             color: '#faaf00',
         },
         '& .MuiRating-iconHover': {
-            color: '#faaf00',
+            color: '#ffe500',
         },
     });
 

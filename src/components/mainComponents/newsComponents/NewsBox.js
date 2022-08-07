@@ -5,7 +5,7 @@ export const NewsBox = (props) => {
     return (
         <div className="content">
             <p className="date">{date}</p>
-            <h4>{props.news.title}</h4>
+            <h5 style={{"color": "#faaf00"}}>{props.news.title}</h5>
             <p>&quot;{props.news.description}</p>
             <a href={props.news.url}>Read more</a>
         </div>
