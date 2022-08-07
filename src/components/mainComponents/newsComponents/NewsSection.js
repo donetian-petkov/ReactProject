@@ -11,7 +11,7 @@ export const NewsSection = () => {
 
         movieService.getArticles('Movie')
             .then(result => {
-                setNews(result);
+                setNews(result.articles);
             });
 
     },[]);

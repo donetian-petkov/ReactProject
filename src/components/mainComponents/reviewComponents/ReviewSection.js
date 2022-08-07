@@ -11,7 +11,7 @@ export const ReviewSection = () => {
 
         movieService.getArticles('Movie+Review')
             .then(result => {
-                setReviews(result);
+                setReviews(result.articles);
             });
 
     },[]);

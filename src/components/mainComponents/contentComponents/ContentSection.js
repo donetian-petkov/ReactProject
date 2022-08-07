@@ -12,17 +12,17 @@ export const ContentSection = () => {
     useEffect(() => {
         movieService.getMoviesByCriteria('now_playing')
             .then(movies => {
-                setMoviesInTheatre(movies);
+                setMoviesInTheatre(movies.results);
             });
 
         movieService.getMoviesByCriteria('top_rated')
             .then(movies => {
-                setMoviesTopRated(movies);
+                setMoviesTopRated(movies.results);
             });
 
         movieService.getMoviesByCriteria('upcoming')
             .then(movies => {
-                setMoviesUpcoming(movies);
+                setMoviesUpcoming(movies.results);
             });
     },[]);
 
