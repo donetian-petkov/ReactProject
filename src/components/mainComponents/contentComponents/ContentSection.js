@@ -25,6 +25,8 @@ export const ContentSection = () => {
             .then(movies => {
                 setMoviesUpcoming(movies.results);
             });
+
+
     },[]);
 
     return (
