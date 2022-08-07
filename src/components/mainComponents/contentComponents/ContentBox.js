@@ -1,8 +1,26 @@
 import {Link} from "react-router-dom";
+import {Rating, styled} from "@mui/material";
+import {useState} from "react";
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import Typography from '@mui/material/Typography';
+import {Star, StarBorderSharp} from "@mui/icons-material";
+
 
 export const ContentBox = (props) => {
 
     const imageUrl = `https://image.tmdb.org/t/p/w500`;
+
+    const [value, setValue] = useState(2);
+
+    const StyledRating = styled(Rating)({
+        '& .MuiRating-iconFilled': {
+            color: '#faaf00',
+        },
+        '& .MuiRating-iconHover': {
+            color: '#faaf00',
+        },
+    });
 
     return (
         <div className={props.className ? "movie last" : "movie"}>
@@ -12,12 +30,14 @@ export const ContentBox = (props) => {
                     </span></span>
                 <Link to={`/movie/${props.movie?.id}`}><img src={`${imageUrl}/${props.movie?.poster_path}`} alt=""/></Link>
             </div>
-            <div className="rating">
-                <p>RATING</p>
-                <div className="stars">
-                    <div className="stars-in"></div>
-                </div>
-                <span className="comments">12</span></div>
+
+            <StyledRating
+                value={value}
+                onChange={(event, newValue) => {
+                    setValue(newValue);
+                }}
+                max={10}
+            />
         </div>
     )
 
