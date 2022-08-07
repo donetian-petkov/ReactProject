@@ -1,4 +1,5 @@
 import {useState} from "react";
+import './LoginComponent.css';
 
 export const LoginComponent = (props) => {
 
