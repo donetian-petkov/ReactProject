@@ -9,7 +9,7 @@ export const Header = () => {
                 <ul>
                     <li><Link to="/">HOME</Link></li>
                     <li><Link to="/now_playing">IN THEATERS</Link></li>
-                    <li><Link to="/coming_soon">COMING SOON</Link></li>
+                    <li><Link to="/upcoming">COMING SOON</Link></li>
                     <li><Link to="/reviews">REVIEWS</Link></li>
                     <li><Link to="/news">NEWS</Link></li>
                     <li><Link to="/login">LOGIN/REGISTER</Link></li>

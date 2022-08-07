@@ -1,5 +1,5 @@
 import {ContentArea} from "./ContentArea";
-import {useEffect, useState} from "react";
+import { useEffect, useState} from "react";
 import * as movieService from '../../../services/movieService'
 
 export const ContentSection = () => {
@@ -10,6 +10,7 @@ export const ContentSection = () => {
 
 
     useEffect(() => {
+
         movieService.getMoviesByCriteria('now_playing')
             .then(movies => {
                 setMoviesInTheatre(movies.results);
@@ -28,9 +29,9 @@ export const ContentSection = () => {
 
     return (
         <div id="content">
-            <ContentArea title='In Theaters' movies={moviesInTheatre}/>
-            <ContentArea title='Top Rated' movies={moviesTopRated}/>
-            <ContentArea title='Upcoming' movies={moviesUpcoming}/>
+            <ContentArea title='In Theaters' criteria='now_playing' movies={moviesInTheatre}/>
+            <ContentArea title='Top Rated' criteria='top_rated' movies={moviesTopRated}/>
+            <ContentArea title='Upcoming' criteria='upcoming' movies={moviesUpcoming}/>
         </div>
     )
 }

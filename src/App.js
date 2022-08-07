@@ -9,6 +9,7 @@ import {MovieDetails} from "./components/movieComponents/MovieDetails";
 import {LoginComponent} from "./components/authComponents/LoginComponent";
 
 function App() {
+
   return (
     <div id="shell">
 
@@ -16,13 +17,14 @@ function App() {
 
         <Routes>
             <Route path='/' element={<Main />} />
-            <Route path='/movies' element={<MoviesSection />} />
+            <Route path='/now_playing' element={<MoviesSection criteria='now_playing'/>} />
+            <Route path='/top_rated' element={<MoviesSection criteria='top_rated'/>} />
+            <Route path='/upcoming' element={<MoviesSection criteria='upcoming'/>} />
             <Route path='/movie/:movieId' element={<MovieDetails />} />
             <Route path='/login' element={<LoginComponent />} />
             <Route path='/pricing' element={<h2>Pricing Page</h2>} />
             <Route path='/contact' element={<h2>Contact Page</h2>} />
         </Routes>
-
         <Footer />
 
     </div>

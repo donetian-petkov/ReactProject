@@ -5,7 +5,7 @@ export const ContentArea = (props) => {
 
     return (
         <div className="box">
-            <Title title={props.title}/>
+            <Title title={props.title} criteria={props.criteria}/>
             {props.movies?.slice(0,5).map(movie => <ContentBox key={movie.id} movie={movie}/>)}
             <ContentBox movie={props.movies ? props.movies[6] : ''} className="last"/>
             <div className="cl">&nbsp;</div>
