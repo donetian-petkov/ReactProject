@@ -43,7 +43,7 @@ export const MovieDetails = (props) => {
                 <img className="card-img-top" src={`${imageUrl}/${movie?.poster_path}`} alt="Card image cap"
                      style={{"height": "500px", "objectFit": "none"}}/>
                 <div className="card-body">
-                    <h5 className="card-title">{movie?.title}</h5>
+                    <h5 className="card-title" style={{"color" : "#faaf00"}}>{movie?.title}</h5>
                     <p className="card-text"><small className="text-muted">Release Date: {movie?.release_date}</small>
                     </p>
                     <p className="card-text">{movie?.overview}</p>
