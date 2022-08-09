@@ -20,7 +20,7 @@ export const ArticlePage = () => {
     return (
         <div id="news" >
             <div className="articleSection">
-                {articles.map(x => <Article key={x.url} article={x}/>)}
+                {articles.slice(0,20).map(x => <Article key={x.url} article={x}/>)}
             </div>
         </div>
     )
