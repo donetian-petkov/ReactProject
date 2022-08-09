@@ -1,10 +1,10 @@
 import {useContext, useState} from "react";
-import './LoginComponent.css';
+import './AuthComponent.css';
 import {useNavigate} from "react-router-dom";
 import * as authService from "../../services/authService";
 import {UserContext} from "../../contexts/userContext";
 
-export const LoginComponent = (props) => {
+export const AuthComponent = (props) => {
 
     const [authMode, setAuthMode] = useState("signin");
     const { userLogin } = useContext(UserContext);
@@ -30,7 +30,7 @@ export const LoginComponent = (props) => {
 
             authService.login(username, password)
                 .then(authData => {
-                    console.log('LoginComponent', authData);
+                    console.log('AuthComponent', authData);
                     userLogin(authData);
                     navigate('/');
                 })

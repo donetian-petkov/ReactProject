@@ -6,25 +6,29 @@ import {Main} from "./components/mainComponents/Main";
 import {Route, Routes} from "react-router-dom";
 import {MoviesSection} from "./components/movieComponents/MoviesSection";
 import {MovieDetails} from "./components/movieComponents/MovieDetails";
-import {LoginComponent} from "./components/authComponents/LoginComponent";
+import {AuthComponent} from "./components/authComponents/AuthComponent";
 import {ArticlePage} from "./components/articlesComponents/ArticlePage";
 import {ReviewPage} from "./components/articlesComponents/ReviewPage";
 import {UserContext} from './contexts/userContext';
 import {useLocalStorage} from "./components/hooks/userLocalStorage";
 import { ProtectedRoute} from './components/authComponents/ProtectedRoute'
+import {Logout} from "./components/authComponents/Logout";
 
 function App() {
 
     const [auth, setAuth] = useLocalStorage('auth', {});
 
     const userLogin = (authData) => {
-        console.log('App ', authData);
         setAuth(authData);
+    };
+
+    const userLogout = () => {
+        setAuth({});
     };
 
     return (
 
-        <UserContext.Provider value={{user: auth, userLogin}}>
+        <UserContext.Provider value={{user: auth, userLogin, userLogout}}>
             <div id="shell">
 
                 <Header/>
@@ -35,7 +39,8 @@ function App() {
                     <Route path='/top_rated' element={<MoviesSection criteria='top_rated'/>}/>
                     <Route path='/upcoming' element={<MoviesSection criteria='upcoming'/>}/>
                     <Route path='/movie/:movieId' element={<MovieDetails/>}/>
-                    <Route path='/login' element={<LoginComponent/>}/>
+                    <Route path='/login' element={<AuthComponent/>}/>
+                    <Route path='/logout' element={<Logout/>}/>
                     <Route path='/news' element={<ArticlePage/>} meta={{ auth: true }}/>
                     <Route path='/reviews' element={<ReviewPage/>}/>
                     <Route path='/comments' element={
