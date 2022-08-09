@@ -1,9 +1,14 @@
-import {useState} from "react";
+import {useContext, useState} from "react";
 import './LoginComponent.css';
+import {useNavigate} from "react-router-dom";
+import * as authService from "../../services/authService";
+import {UserContext} from "../../contexts/userContext";
 
 export const LoginComponent = (props) => {
 
-    let [authMode, setAuthMode] = useState("signin");
+    const [authMode, setAuthMode] = useState("signin");
+    const { userLogin } = useContext(UserContext);
+    const navigate = useNavigate();
 
     const [values, setValues] = useState({
         username: '',
@@ -17,8 +22,39 @@ export const LoginComponent = (props) => {
 
         if (authMode === 'signin') {
 
+            const {
+                username,
+                password,
+            } = Object.fromEntries(new FormData(e.target));
+
+
+            authService.login(username, password)
+                .then(authData => {
+                    console.log('LoginComponent', authData);
+                    userLogin(authData);
+                    navigate('/');
+                })
+                .catch(() => {
+                    navigate('/404');
+                });
+
+
         } else if (authMode === 'signup') {
 
+            const {
+                username,
+                email,
+                password,
+            } = Object.fromEntries(new FormData(e.target));
+
+            authService.register(username, email, password)
+                .then(authData => {
+                    userLogin(authData);
+                    navigate('/');
+                })
+                .catch(() => {
+                    navigate('/404');
+                });
         }
 
     };
@@ -49,13 +85,13 @@ export const LoginComponent = (props) => {
               </span>
                         </div>
                         <div className="form-group mt-3">
-                            <label>Email address</label>
+                            <label>Username</label>
                             <input
-                                type="email"
+                                type="text"
                                 className="form-control mt-1"
-                                placeholder="Enter email"
-                                name='email'
-                                value={values.email}
+                                placeholder="Enter username"
+                                name='username'
+                                value={values.username}
                                 onChange={changeHandler}
                             />
                         </div>

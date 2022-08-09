@@ -9,29 +9,42 @@ import {MovieDetails} from "./components/movieComponents/MovieDetails";
 import {LoginComponent} from "./components/authComponents/LoginComponent";
 import {ArticlePage} from "./components/articlesComponents/ArticlePage";
 import {ReviewPage} from "./components/articlesComponents/ReviewPage";
+import {UserContext} from './contexts/userContext';
+import {useLocalStorage} from "./components/hooks/userLocalStorage";
+
 
 function App() {
 
-  return (
-    <div id="shell">
+    const [auth, setAuth] = useLocalStorage('auth', {});
 
-        <Header />
+    const userLogin = (authData) => {
+        console.log('App ', authData);
+        setAuth(authData);
+    };
 
-        <Routes>
-            <Route path='/' element={<Main />} />
-            <Route path='/now_playing' element={<MoviesSection criteria='now_playing'/>} />
-            <Route path='/top_rated' element={<MoviesSection criteria='top_rated'/>} />
-            <Route path='/upcoming' element={<MoviesSection criteria='upcoming'/>} />
-            <Route path='/movie/:movieId' element={<MovieDetails />} />
-            <Route path='/login' element={<LoginComponent />} />
-            <Route path='/news' element={<ArticlePage />} />
-            <Route path='/reviews' element={<ReviewPage />} />
+    return (
 
-        </Routes>
-        <Footer />
+        <UserContext.Provider value={{user: auth, userLogin}}>
+            <div id="shell">
 
-    </div>
-  );
-}
+                <Header/>
 
-export default App;
+                <Routes>
+                    <Route path='/' element={<Main/>}/>
+                    <Route path='/now_playing' element={<MoviesSection criteria='now_playing'/>}/>
+                    <Route path='/top_rated' element={<MoviesSection criteria='top_rated'/>}/>
+                    <Route path='/upcoming' element={<MoviesSection criteria='upcoming'/>}/>
+                    <Route path='/movie/:movieId' element={<MovieDetails/>}/>
+                    <Route path='/login' element={<LoginComponent/>}/>
+                    <Route path='/news' element={<ArticlePage/>}/>
+                    <Route path='/reviews' element={<ReviewPage/>}/>
+
+                </Routes>
+                <Footer/>
+
+            </div>
+            </UserContext.Provider>
+            );
+            }
+
+            export default App;
