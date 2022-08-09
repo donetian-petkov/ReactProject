@@ -1,6 +1,9 @@
 import {Link} from "react-router-dom";
+import * as authService from '../services/authService'
 
 export const Header = () => {
+
+    console.log(authService.getIsLoggedIn());
 
     return (
         <div id="header">
@@ -17,12 +20,15 @@ export const Header = () => {
                 </ul>
             </div>
             <div id="sub-navigation">
-                {/*<ul>
-                    <li><Link to="/ratings">YOUR RATINGS</Link></li>
-                    <li><Link to="/comments">LATEST COMMENTS</Link></li>
-                    <li><Link to="/favourites">YOUR FAVOURITES</Link></li>
-                    <li><Link to="/movies">SHOW ALL MOVIES</Link></li>
-                </ul>*/}
+                {
+                    authService.getIsLoggedIn()
+                        ? <ul>
+                            <li><Link to="/ratings">YOUR RATINGS</Link></li>
+                            <li><Link to="/comments">LATEST COMMENTS</Link></li>
+                            <li><Link to="/favourites">YOUR FAVOURITES</Link></li>
+                        </ul>
+                        : null
+                }
                 <div id="search">
                     <form action="#" method="get" acceptCharset="utf-8">
                         <label htmlFor="search-field">SEARCH</label>

@@ -43,12 +43,15 @@ export const logout = async () => {
 
         return true;
     } catch (error) {
-        alert(`Error! ${error.message}`);
+        console.log(`Error! ${error.message}`);
         return false;
     }
 };
 
-export const getIsLoggedIn = () => localStorage.getItem('auth') === 'true';
+export const getIsLoggedIn = () => {
+
+    return localStorage.getItem('auth') !== '{}';
+};
 
 
 

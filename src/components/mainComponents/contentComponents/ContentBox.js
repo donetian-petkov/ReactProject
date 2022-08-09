@@ -24,7 +24,13 @@ export const ContentBox = (props) => {
                 <span className="play">
                     <span className="name">{props.movie?.original_title}
                     </span></span>
-                <Link to={`/movie/${props.movie?.id}`}><img src={`${imageUrl}/${props.movie?.poster_path}`} alt=""/></Link>
+                <Link to={`/movie/${props.movie?.id}`}>
+                    {
+                        props.movie?.poster_path
+                            ? <img src={`${imageUrl}/${props.movie?.poster_path}`} alt=""/>
+                            : ''
+                    }
+                </Link>
             </div>
 
             <StyledRating
