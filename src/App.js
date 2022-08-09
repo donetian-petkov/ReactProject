@@ -12,8 +12,21 @@ import {ReviewPage} from "./components/articlesComponents/ReviewPage";
 import {UserContext} from './contexts/userContext';
 import {useLocalStorage} from "./components/hooks/userLocalStorage";
 
+import * as authService from './services/authService';
+
 
 function App() {
+
+    const requireLogin = (to, from, next) => {
+        if (to.meta.auth) {
+            if (authService.getIsLoggedIn()) {
+                next();
+            }
+            next.redirect('/login');
+        } else {
+            next();
+        }
+    };
 
     const [auth, setAuth] = useLocalStorage('auth', {});
 
@@ -36,7 +49,7 @@ function App() {
                     <Route path='/upcoming' element={<MoviesSection criteria='upcoming'/>}/>
                     <Route path='/movie/:movieId' element={<MovieDetails/>}/>
                     <Route path='/login' element={<LoginComponent/>}/>
-                    <Route path='/news' element={<ArticlePage/>}/>
+                    <Route path='/news' element={<ArticlePage/>} meta={{ auth: true }}/>
                     <Route path='/reviews' element={<ReviewPage/>}/>
 
                 </Routes>

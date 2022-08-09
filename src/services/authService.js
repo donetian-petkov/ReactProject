@@ -16,7 +16,7 @@ export const login = async (username, password) => {
     } catch (error) {
         console.error('Error while logging in user', error);
     }
-    
+
 }
 
 /*export const logout = async (accessToken) => {
@@ -32,6 +32,9 @@ export const login = async (username, password) => {
         console.log(error);
     }
 };*/
+
+export const getIsLoggedIn = () => localStorage.getItem('auth') === 'true';
+
 
 export const register = async (username, email, password) => {
 
