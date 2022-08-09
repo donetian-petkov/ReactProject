@@ -1,16 +1,15 @@
 import {useEffect, useState} from "react";
-import {Title} from "../mainComponents/Title";
 import * as movieService from "../../services/movieService";
 import {Article} from "./Article";
-import './ArticlePage.css';
+import './ReviewPage.css';
 
-export const ArticlePage = () => {
+export const ReviewPage = () => {
 
     const [articles, setArticles] = useState([]);
 
     useEffect(() => {
 
-        movieService.getArticles('Movie')
+        movieService.getArticles('Movie+Review')
             .then(result => {
                 setArticles(result.articles);
             });

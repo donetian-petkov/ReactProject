@@ -9,6 +9,7 @@ export const NewsSection = () => {
 
     useEffect(() => {
 
+
         movieService.getArticles('Movie')
             .then(result => {
                 setNews(result.articles);

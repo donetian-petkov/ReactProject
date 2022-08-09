@@ -1,8 +1,6 @@
-.articles {
+.articleSection {
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr;
 
 }

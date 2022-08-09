@@ -8,6 +8,7 @@ import {MoviesSection} from "./components/movieComponents/MoviesSection";
 import {MovieDetails} from "./components/movieComponents/MovieDetails";
 import {LoginComponent} from "./components/authComponents/LoginComponent";
 import {ArticlePage} from "./components/articlesComponents/ArticlePage";
+import {ReviewPage} from "./components/articlesComponents/ReviewPage";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
             <Route path='/movie/:movieId' element={<MovieDetails />} />
             <Route path='/login' element={<LoginComponent />} />
             <Route path='/news' element={<ArticlePage />} />
+            <Route path='/reviews' element={<ReviewPage />} />
 
         </Routes>
         <Footer />
