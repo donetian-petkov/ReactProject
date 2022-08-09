@@ -7,6 +7,7 @@ import {Route, Routes} from "react-router-dom";
 import {MoviesSection} from "./components/movieComponents/MoviesSection";
 import {MovieDetails} from "./components/movieComponents/MovieDetails";
 import {LoginComponent} from "./components/authComponents/LoginComponent";
+import {ArticlePage} from "./components/articlesComponents/ArticlePage";
 
 function App() {
 
@@ -22,8 +23,8 @@ function App() {
             <Route path='/upcoming' element={<MoviesSection criteria='upcoming'/>} />
             <Route path='/movie/:movieId' element={<MovieDetails />} />
             <Route path='/login' element={<LoginComponent />} />
-            <Route path='/pricing' element={<h2>Pricing Page</h2>} />
-            <Route path='/contact' element={<h2>Contact Page</h2>} />
+            <Route path='/news' element={<ArticlePage />} />
+
         </Routes>
         <Footer />
 
