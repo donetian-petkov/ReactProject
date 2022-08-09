@@ -15,8 +15,17 @@ export const Header = () => {
                     <li><Link to="/upcoming">COMING SOON</Link></li>
                     <li><Link to="/reviews">REVIEWS</Link></li>
                     <li><Link to="/news">NEWS</Link></li>
-                    <li><Link to="/login">LOGIN/REGISTER</Link></li>
-                    <li><Link to="/logout">LOGOUT</Link></li>
+                    {
+                        !authService.getIsLoggedIn()
+                            ?  <li><Link to="/login">LOGIN/REGISTER</Link></li>
+                            : null
+                    }
+                    {
+                        authService.getIsLoggedIn()
+                            ? <li><Link to="/logout">LOGOUT</Link></li>
+                            : null
+                    }
+
                 </ul>
             </div>
             <div id="sub-navigation">

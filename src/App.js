@@ -40,7 +40,6 @@ function App() {
                     <Route path='/upcoming' element={<MoviesSection criteria='upcoming'/>}/>
                     <Route path='/movie/:movieId' element={<MovieDetails/>}/>
                     <Route path='/login' element={<AuthComponent/>}/>
-                    <Route path='/logout' element={<Logout/>}/>
                     <Route path='/news' element={<ArticlePage/>} meta={{ auth: true }}/>
                     <Route path='/reviews' element={<ReviewPage/>}/>
                     <Route path='/comments' element={
@@ -52,6 +51,7 @@ function App() {
                     <Route element={<ProtectedRoute user={auth} />}>
                         <Route path="/comments" element={<h2>Comments</h2>} />
                         <Route path="/ratings" element={<h2>Ratings</h2>} />
+                        <Route path='/logout' element={<Logout/>}/>
                     </Route>
                 </Routes>
                 <Footer/>
