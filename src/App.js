@@ -11,22 +11,9 @@ import {ArticlePage} from "./components/articlesComponents/ArticlePage";
 import {ReviewPage} from "./components/articlesComponents/ReviewPage";
 import {UserContext} from './contexts/userContext';
 import {useLocalStorage} from "./components/hooks/userLocalStorage";
-
-import * as authService from './services/authService';
-
+import { ProtectedRoute} from './components/authComponents/ProtectedRoute'
 
 function App() {
-
-    const requireLogin = (to, from, next) => {
-        if (to.meta.auth) {
-            if (authService.getIsLoggedIn()) {
-                next();
-            }
-            next.redirect('/login');
-        } else {
-            next();
-        }
-    };
 
     const [auth, setAuth] = useLocalStorage('auth', {});
 
@@ -51,7 +38,16 @@ function App() {
                     <Route path='/login' element={<LoginComponent/>}/>
                     <Route path='/news' element={<ArticlePage/>} meta={{ auth: true }}/>
                     <Route path='/reviews' element={<ReviewPage/>}/>
+                    <Route path='/comments' element={
+                        <ProtectedRoute user={auth}>
+                            <h2>Comments</h2>
+                        </ProtectedRoute>}
+                    />
 
+                    <Route element={<ProtectedRoute user={auth} />}>
+                        <Route path="/comments" element={<h2>Comments</h2>} />
+                        <Route path="/ratings" element={<h2>Ratings</h2>} />
+                    </Route>
                 </Routes>
                 <Footer/>
 

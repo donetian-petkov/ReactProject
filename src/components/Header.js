@@ -19,7 +19,7 @@ export const Header = () => {
             <div id="sub-navigation">
                 {/*<ul>
                     <li><Link to="/ratings">YOUR RATINGS</Link></li>
-                    <li><Link to="/comments">YOUR COMMENTS</Link></li>
+                    <li><Link to="/comments">LATEST COMMENTS</Link></li>
                     <li><Link to="/favourites">YOUR FAVOURITES</Link></li>
                     <li><Link to="/movies">SHOW ALL MOVIES</Link></li>
                 </ul>*/}
