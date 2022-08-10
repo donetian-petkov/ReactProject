@@ -3,8 +3,6 @@ import * as authService from '../services/authService'
 
 export const Header = () => {
 
-    console.log(authService.getIsLoggedIn());
-
     return (
         <div id="header">
             <h1 id="logo"><Link to="/">HOME</Link></h1>

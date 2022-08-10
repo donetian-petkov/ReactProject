@@ -8,7 +8,10 @@ export const ProtectedRoute = ({
                             redirectPath = '/login',
                             children,
                         }) => {
-    if (!user) {
+
+    console.log(user);
+
+    if (!user.username) {
         return <Navigate to={redirectPath} replace />;
     }
 
