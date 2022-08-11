@@ -41,7 +41,7 @@ export const MovieDetails = (props) => {
 
             <div className="card  text-white bg-dark  mb-3">
                 <img className="card-img-top" src={`${imageUrl}/${movie?.poster_path}`} alt="Card image cap"
-                     style={{"height": "500px", "objectFit": "none"}}/>
+                     style={{"height": "500px", "objectFit": "none", "objectPosition":"50% 80%"}}/>
                 <div className="card-body">
                     <h5 className="card-title" style={{"color" : "#faaf00"}}>{movie?.title}</h5>
                     <StyledRating
