@@ -13,6 +13,7 @@ import {UserContext} from './contexts/userContext';
 import {useLocalStorage} from "./components/hooks/userLocalStorage";
 import { ProtectedRoute} from './components/authComponents/ProtectedRoute'
 import {Logout} from "./components/authComponents/Logout";
+import {Search} from "./components/searchComponent/Search";
 
 function App() {
 
@@ -55,6 +56,7 @@ function App() {
                         <Route path="/ratings" element={<h2>Ratings</h2>} />
                         <Route path='/logout' element={<Logout/>}/>
                     </Route>
+                    <Route path='/search/:searchWords' element={<Search />} />
                 </Routes>
                 <Footer/>
 

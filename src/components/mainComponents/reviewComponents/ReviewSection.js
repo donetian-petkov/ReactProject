@@ -18,7 +18,7 @@ export const ReviewSection = () => {
 
     return (
         <div id="news">
-            <Title title="Latest Reviews"/>
+            <Title title="Latest Reviews" criteria='reviews'/>
             {reviews.slice(0,3).map(x => <ReviewBox key={x.url} reviews={x}/>)}
         </div>
     );

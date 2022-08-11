@@ -19,7 +19,7 @@ export const NewsSection = () => {
 
     return (
         <div id="news">
-            <Title title="Latest News"/>
+            <Title title="Latest News" criteria='news'/>
             {news.slice(0,3).map(x => <NewsBox key={x.url} news={x}/>)}
         </div>
     );

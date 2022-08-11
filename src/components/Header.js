@@ -1,14 +1,29 @@
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import * as authService from '../services/authService'
 import {useLocalStorage} from "./hooks/userLocalStorage";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {UserContext} from "../contexts/userContext";
 
 export const Header = () => {
 
+    const navigate = useNavigate();
     const { getIsLoggedIn } = useContext(UserContext);
+    const [searchWords, setSearchWords ] = useState('');
 
-    console.log(getIsLoggedIn());
+
+    const changeHandler = (e) => {
+        setSearchWords(e.target.value);
+    };
+
+    const searchHandler = (e) => {
+
+        e.preventDefault();
+
+        const {search_field} = Object.fromEntries(new FormData(e.target));
+
+        navigate(`/search/${search_field}`);
+
+    }
 
 
     return (
@@ -45,10 +60,16 @@ export const Header = () => {
                         : null
                 }
                 <div id="search">
-                    <form action="#" method="get" acceptCharset="utf-8">
+                    <form onSubmit={searchHandler}>
                         <label htmlFor="search-field">SEARCH</label>
-                        <input type="text" name="search field" defaultValue="Enter search here" id="search-field"
-                               className="blink search-field"/>
+                        <input type="text"
+                               name="search_field"
+                               defaultValue="Enter search here"
+                               id="search_field"
+                               className="blink search-field"
+                               onChange={changeHandler}
+                               value={searchWords}
+                        />
                         <input type="submit" value="GO!" className="search-button"/>
                     </form>
                 </div>
