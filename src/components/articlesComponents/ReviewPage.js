@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import * as movieService from "../../services/movieService";
+import * as reviewService from "../../services/reviewService";
 import {Article} from "./Article";
 import './ReviewPage.css';
 
@@ -9,19 +9,31 @@ export const ReviewPage = () => {
 
     useEffect(() => {
 
-        movieService.getArticles('Movie+Review')
-            .then(result => {
-                setArticles(result.articles);
+        reviewService.getAllReviews()
+            .then(results => {
+                for (const object of results) {
+                    // Access the Parse Object attributes using the .GET method
+                    const reviewText = object.get('reviewText');
+                    const rating = object.get('rating');
+                    const movieId = object.get('movieId');
+                    const createdAt = object.get('createdAt');
+
+                    const review = {reviewText , rating, movieId, createdAt};
+
+                    setArticles(prevState => ({
+                        ...prevState,
+                        review
+                    }));
+                }
             });
+
 
     },[]);
 
+    console.log(articles);
+
     return (
-        <div id="news" >
-            <div className="articleSection">
-                {articles.slice(0,21).map(x => <Article key={x.url} article={x}/>)}
-            </div>
-        </div>
+        <h2>Reviews</h2>
     )
 
 

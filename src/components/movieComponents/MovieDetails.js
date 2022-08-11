@@ -4,6 +4,7 @@ import * as movieService from '../../services/movieService';
 import './MovieDetails.css';
 import {YoutubeVideo} from "./YoutubeVideo";
 import {Rating, styled, Typography} from "@mui/material";
+import {Link, useNavigate} from "react-router-dom";
 
 
 
@@ -13,8 +14,6 @@ export const MovieDetails = (props) => {
     const {movieId} = useParams();
     const [movie, setMovie] = useState({});
     const [trailerId, setTrailerId] = useState('');
-    const [value, setValue] = useState(2);
-
 
     useEffect(() => {
 
@@ -53,6 +52,8 @@ export const MovieDetails = (props) => {
                     </p>
                     <p className="card-text">{movie?.overview}</p>
                     <a href={`https://www.imdb.com/title/${movie?.imdb_id}`} className="card-link">IMDb Link</a>
+                    <Link to={`/addReview/${movie?.id}`} className="card-link">Add Rating and Review</Link>
+
                 </div>
 
                 <YoutubeVideo embedId={trailerId} />

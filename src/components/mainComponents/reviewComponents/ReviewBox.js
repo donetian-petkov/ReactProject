@@ -1,13 +1,29 @@
+import {useEffect, useState} from "react";
+import * as movieService from '../../../services/movieService'
+import {Rating} from "@mui/material";
+
 export const ReviewBox = (props) => {
 
-    const date = new Date(props.reviews?.publishedAt).toString();
+    const date = new Date(props.reviews?.createdAt).toString();
+
+    const [movie, setMovie] = useState({});
+
+    useEffect(() => {
+
+        movieService.getMovieInfo(props.reviews?.movieId)
+            .then(result => {
+                setMovie(result);
+            })
+
+    })
 
     return (
         <div className="content">
             <p className="date">{date}</p>
-            <h5 style={{"color": "#faaf00"}}>{props.reviews?.title}</h5>
-            <p>&quot;{props.reviews?.description}</p>
-            <a href={props.reviews?.url}>Read more</a></div>
+            <h5 style={{"color": "#faaf00"}}>{movie.title}</h5>
+            <p>&quot;{props.reviews?.reviewText}</p>
+            <Rating name="read-only" value={props.reviews?.rating} readOnly />
+        </div>
     )
 
 }

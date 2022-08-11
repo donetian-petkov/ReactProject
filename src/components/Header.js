@@ -1,6 +1,6 @@
 import {Link, useNavigate} from "react-router-dom";
 import * as authService from '../services/authService'
-import {useLocalStorage} from "./hooks/userLocalStorage";
+import {useLocalStorage} from "../hooks/userLocalStorage";
 import {useContext, useState} from "react";
 import {UserContext} from "../contexts/userContext";
 
@@ -64,7 +64,7 @@ export const Header = () => {
                         <label htmlFor="search-field">SEARCH</label>
                         <input type="text"
                                name="search_field"
-                               defaultValue="Enter search here"
+                               placeholder="Enter search here"
                                id="search_field"
                                className="blink search-field"
                                onChange={changeHandler}

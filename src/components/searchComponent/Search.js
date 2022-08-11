@@ -17,8 +17,6 @@ export const Search = (props) => {
 
     }, []);
 
-    console.log()
-
     return (
         <div className="box">
             {movies?.slice(0,21).map(movie => <ContentBox key={movie.id} movie={movie}/>)}

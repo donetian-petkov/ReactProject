@@ -2,6 +2,8 @@ import {NewsBox} from "./NewsBox";
 import {Title} from "../Title";
 import {useEffect, useState} from "react";
 import * as movieService from "../../../services/movieService";
+import * as newsService from "../../../services/newsService";
+
 
 export const NewsSection = () => {
 
@@ -10,7 +12,7 @@ export const NewsSection = () => {
     useEffect(() => {
 
 
-        movieService.getArticles('Movie')
+        newsService.getNews('Movie')
             .then(result => {
                 setNews(result.articles);
             });
@@ -20,7 +22,7 @@ export const NewsSection = () => {
     return (
         <div id="news">
             <Title title="Latest News" criteria='news'/>
-            {news.slice(0,3).map(x => <NewsBox key={x.url} news={x}/>)}
+            {news.slice(0,3).map(x => <NewsBox key={x.id} news={x}/>)}
         </div>
     );
 }

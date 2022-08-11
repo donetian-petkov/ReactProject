@@ -1,5 +1,7 @@
 import {useEffect, useState} from "react";
 import * as movieService from "../../services/movieService";
+import * as newsService from "../../services/newsService";
+
 import {Article} from "./Article";
 import './NewsPage.css';
 
@@ -9,7 +11,7 @@ export const NewsPage = () => {
 
     useEffect(() => {
 
-        movieService.getArticles('Movie')
+        newsService.getNews('Movie')
             .then(result => {
                 setArticles(result.articles);
             });

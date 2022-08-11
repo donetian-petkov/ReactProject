@@ -8,12 +8,14 @@ import {MoviesSection} from "./components/movieComponents/MoviesSection";
 import {MovieDetails} from "./components/movieComponents/MovieDetails";
 import {AuthComponent} from "./components/authComponents/AuthComponent";
 import {NewsPage} from "./components/articlesComponents/NewsPage";
-import {ReviewPage} from "./components/articlesComponents/ReviewPage";
 import {UserContext} from './contexts/userContext';
-import {useLocalStorage} from "./components/hooks/userLocalStorage";
+import {useLocalStorage} from "./hooks/userLocalStorage";
 import { ProtectedRoute} from './components/authComponents/ProtectedRoute'
 import {Logout} from "./components/authComponents/Logout";
 import {Search} from "./components/searchComponent/Search";
+import {AddReview} from "./components/reviewComponents/AddReview";
+import {ReviewSection} from "./components/mainComponents/reviewComponents/ReviewSection";
+import {ReviewPage} from "./components/articlesComponents/ReviewPage";
 
 function App() {
 
@@ -28,8 +30,6 @@ function App() {
     };
 
     const getIsLoggedIn = () => {
-
-        console.log(auth);
 
         return Object.keys(auth).length !== 0;
 
@@ -55,6 +55,7 @@ function App() {
                         <Route path="/comments" element={<h2>Comments</h2>} />
                         <Route path="/ratings" element={<h2>Ratings</h2>} />
                         <Route path='/logout' element={<Logout/>}/>
+                        <Route path='/addReview/:movieId' element={<AddReview/>}/>
                     </Route>
                     <Route path='/search/:searchWords' element={<Search />} />
                 </Routes>
