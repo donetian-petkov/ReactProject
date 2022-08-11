@@ -26,10 +26,6 @@ function App() {
         setAuth({});
     };
 
-
-    console.log('This comes from App.js ');
-    console.log(auth);
-
     return (
 
         <UserContext.Provider value={{user: auth, userLogin, userLogout}}>
@@ -46,12 +42,6 @@ function App() {
                     <Route path='/login' element={<AuthComponent/>}/>
                     <Route path='/news' element={<ArticlePage/>}/>
                     <Route path='/reviews' element={<ReviewPage/>}/>
-                    <Route path='/comments' element={
-                        <ProtectedRoute user={auth}>
-                            <h2>Comments</h2>
-                        </ProtectedRoute>}
-                    />
-
                     <Route element={<ProtectedRoute user={auth} />}>
                         <Route path="/comments" element={<h2>Comments</h2>} />
                         <Route path="/ratings" element={<h2>Ratings</h2>} />
