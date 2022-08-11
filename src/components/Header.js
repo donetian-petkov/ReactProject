@@ -1,7 +1,15 @@
 import {Link} from "react-router-dom";
 import * as authService from '../services/authService'
+import {useLocalStorage} from "./hooks/userLocalStorage";
+import {useContext} from "react";
+import {UserContext} from "../contexts/userContext";
 
 export const Header = () => {
+
+    const { getIsLoggedIn } = useContext(UserContext);
+
+    console.log(getIsLoggedIn());
+
 
     return (
         <div id="header">
@@ -14,12 +22,12 @@ export const Header = () => {
                     <li><Link to="/reviews">REVIEWS</Link></li>
                     <li><Link to="/news">NEWS</Link></li>
                     {
-                        !authService.getIsLoggedIn()
+                        !getIsLoggedIn()
                             ?  <li><Link to="/login">LOGIN/REGISTER</Link></li>
                             : null
                     }
                     {
-                        authService.getIsLoggedIn()
+                        getIsLoggedIn()
                             ? <li><Link to="/logout">LOGOUT</Link></li>
                             : null
                     }
@@ -28,7 +36,7 @@ export const Header = () => {
             </div>
             <div id="sub-navigation">
                 {
-                    authService.getIsLoggedIn()
+                    getIsLoggedIn()
                         ? <ul>
                             <li><Link to="/ratings">YOUR RATINGS</Link></li>
                             <li><Link to="/comments">LATEST COMMENTS</Link></li>

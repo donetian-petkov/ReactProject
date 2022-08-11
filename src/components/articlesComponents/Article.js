@@ -2,7 +2,7 @@ import './Article.css';
 
 export const Article = (props) => {
 
-    const date = new Date(props.article.publishedAt).toString();
+    const date = new Date(props.article?.publishedAt).toString();
 
     return (
         <div className="card" style={{"width": "18rem", height: '550px'}}>

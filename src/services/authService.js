@@ -48,10 +48,5 @@ export const logout = async () => {
     }
 };
 
-export const getIsLoggedIn = () => {
-
-    return localStorage.getItem('auth') !== '{}';
-};
-
 
 

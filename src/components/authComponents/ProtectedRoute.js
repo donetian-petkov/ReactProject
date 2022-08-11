@@ -9,10 +9,7 @@ export const ProtectedRoute = ({
                             children,
                         }) => {
 
-    console.log('This comes from Protected Route');
-    console.log(user);
-
-    if (Object.keys(user).length === 0) {
+    if (!user || Object.keys(user).length === 0) {
         return <Navigate to={redirectPath} replace />;
     }
 

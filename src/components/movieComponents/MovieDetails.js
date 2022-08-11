@@ -44,18 +44,22 @@ export const MovieDetails = (props) => {
                      style={{"height": "500px", "objectFit": "none"}}/>
                 <div className="card-body">
                     <h5 className="card-title" style={{"color" : "#faaf00"}}>{movie?.title}</h5>
+                    <StyledRating
+                        value={movie?.vote_average}
+                        max={10}
+                    />
+                    <p></p>
                     <p className="card-text"><small className="text-muted">Release Date: {movie?.release_date}</small>
                     </p>
                     <p className="card-text">{movie?.overview}</p>
                     <a href={`https://www.imdb.com/title/${movie?.imdb_id}`} className="card-link">IMDb Link</a>
                 </div>
-                <StyledRating
-                    value={movie?.vote_average}
-                    readOnly
-                    max={10}
-                />
+
+                <YoutubeVideo embedId={trailerId} />
             </div>
 
     )
+
+
 
 }

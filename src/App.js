@@ -7,7 +7,7 @@ import {Route, Routes} from "react-router-dom";
 import {MoviesSection} from "./components/movieComponents/MoviesSection";
 import {MovieDetails} from "./components/movieComponents/MovieDetails";
 import {AuthComponent} from "./components/authComponents/AuthComponent";
-import {ArticlePage} from "./components/articlesComponents/ArticlePage";
+import {NewsPage} from "./components/articlesComponents/NewsPage";
 import {ReviewPage} from "./components/articlesComponents/ReviewPage";
 import {UserContext} from './contexts/userContext';
 import {useLocalStorage} from "./components/hooks/userLocalStorage";
@@ -26,9 +26,17 @@ function App() {
         setAuth({});
     };
 
+    const getIsLoggedIn = () => {
+
+        console.log(auth);
+
+        return Object.keys(auth).length !== 0;
+
+    };
+
     return (
 
-        <UserContext.Provider value={{user: auth, userLogin, userLogout}}>
+        <UserContext.Provider value={{user: auth, userLogin, userLogout, getIsLoggedIn}}>
             <div id="shell">
 
                 <Header/>
@@ -40,7 +48,7 @@ function App() {
                     <Route path='/upcoming' element={<MoviesSection criteria='upcoming'/>}/>
                     <Route path='/movie/:movieId' element={<MovieDetails/>}/>
                     <Route path='/login' element={<AuthComponent/>}/>
-                    <Route path='/news' element={<ArticlePage/>}/>
+                    <Route path='/news' element={<NewsPage/>}/>
                     <Route path='/reviews' element={<ReviewPage/>}/>
                     <Route element={<ProtectedRoute user={auth} />}>
                         <Route path="/comments" element={<h2>Comments</h2>} />

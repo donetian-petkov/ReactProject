@@ -1,10 +1,9 @@
 import {useEffect, useState} from "react";
-import {Title} from "../mainComponents/Title";
 import * as movieService from "../../services/movieService";
 import {Article} from "./Article";
-import './ArticlePage.css';
+import './NewsPage.css';
 
-export const ArticlePage = () => {
+export const NewsPage = () => {
 
     const [articles, setArticles] = useState([]);
 
@@ -20,7 +19,7 @@ export const ArticlePage = () => {
     return (
         <div id="news" >
             <div className="articleSection">
-                {articles.slice(0,20).map(x => <Article key={x.url} article={x}/>)}
+                {articles.slice(0,21).map(x => <Article key={x.url} article={x}/>)}
             </div>
         </div>
     )
