@@ -9,9 +9,7 @@ export const ProtectedRoute = ({
                             children,
                         }) => {
 
-    console.log(user);
-
-    if (!user.username) {
+    if (user === '{}') {
         return <Navigate to={redirectPath} replace />;
     }
 

@@ -26,6 +26,10 @@ function App() {
         setAuth({});
     };
 
+
+    console.log('This comes from App.js ');
+    console.log(auth);
+
     return (
 
         <UserContext.Provider value={{user: auth, userLogin, userLogout}}>
@@ -40,7 +44,7 @@ function App() {
                     <Route path='/upcoming' element={<MoviesSection criteria='upcoming'/>}/>
                     <Route path='/movie/:movieId' element={<MovieDetails/>}/>
                     <Route path='/login' element={<AuthComponent/>}/>
-                    <Route path='/news' element={<ArticlePage/>} meta={{ auth: true }}/>
+                    <Route path='/news' element={<ArticlePage/>}/>
                     <Route path='/reviews' element={<ReviewPage/>}/>
                     <Route path='/comments' element={
                         <ProtectedRoute user={auth}>
