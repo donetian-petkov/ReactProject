@@ -9,12 +9,13 @@ Parse.initialize(
 
 export const addReview = async (data) => {
 
-    const {reviewText, rating, movieId} = data;
+    const {reviewText, rating, movieId, username} = data;
 
     const myNewObject = new Parse.Object('Review');
     myNewObject.set('reviewText', reviewText);
     myNewObject.set('rating', Number(rating));
     myNewObject.set('movieId', movieId);
+    myNewObject.set('username', username);
     try {
         const result = await myNewObject.save();
         // Access the Parse Object attributes using the .GET method

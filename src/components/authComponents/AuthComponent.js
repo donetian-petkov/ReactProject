@@ -30,7 +30,6 @@ export const AuthComponent = (props) => {
 
             authService.login(username, password)
                 .then(authData => {
-                    console.log('AuthComponent', authData);
                     userLogin(authData);
                     navigate('/');
                 })

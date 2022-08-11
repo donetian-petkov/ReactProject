@@ -1,12 +1,14 @@
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import * as movieService from '../../services/movieService';
 import * as reviewService from '../../services/reviewService';
 import {useNavigate, useParams} from "react-router-dom";
+import {UserContext} from "../../contexts/userContext";
 
 export const AddReview = (props) => {
 
     const [rating, setRating] = useState(0);
     const [reviewText, setReviewText] = useState('');
+    const {user} = useContext(UserContext);
     const [movie, setMovie] = useState({});
     const {movieId} = useParams();
     const navigate = useNavigate();
@@ -23,7 +25,11 @@ export const AddReview = (props) => {
 
         e.preventDefault();
 
-        reviewService.addReview({reviewText, rating, movieId})
+        console.log(user);
+
+        const username = user.username;
+
+        reviewService.addReview({reviewText, rating, movieId, username})
             .then(result => {
                 navigate(`/movie/${movieId}`);
             })

@@ -13,12 +13,15 @@ export const ReviewSection = () => {
             .then(results => {
                 for (const object of results) {
                     // Access the Parse Object attributes using the .GET method
+                    const reviewId = object.get('objectId');
                     const reviewText = object.get('reviewText');
                     const rating = object.get('rating');
                     const movieId = object.get('movieId');
                     const createdAt = object.get('createdAt');
+                    const username = object.get('username');
 
-                    const review = {reviewText , rating, movieId, createdAt};
+
+                    const review = {reviewId, reviewText , rating, movieId, createdAt, username};
 
                     setReviews(prevState => [...prevState,review]);
                 }
@@ -30,7 +33,7 @@ export const ReviewSection = () => {
     return (
         <div id="news">
             <Title title="Latest Reviews" criteria='reviews'/>
-            {reviews.slice(0,3).map(x => <ReviewBox key={x.movieId} reviews={x}/>)}
+            {reviews.slice(0,3).map(x => <ReviewBox key={x.reviewId} review={x}/>)}
         </div>
     );
 }

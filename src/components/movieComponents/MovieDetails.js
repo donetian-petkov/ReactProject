@@ -5,6 +5,7 @@ import './MovieDetails.css';
 import {YoutubeVideo} from "./YoutubeVideo";
 import {Rating, styled, Typography} from "@mui/material";
 import {Link, useNavigate} from "react-router-dom";
+import {Review} from "../articlesComponents/Review";
 
 
 
@@ -51,12 +52,13 @@ export const MovieDetails = (props) => {
                     <p className="card-text"><small className="text-muted">Release Date: {movie?.release_date}</small>
                     </p>
                     <p className="card-text">{movie?.overview}</p>
-                    <a href={`https://www.imdb.com/title/${movie?.imdb_id}`} className="card-link">IMDb Link</a>
+                    <a href={`https://www.imdb.com/title/${movie?.imdb_id}`} target="_blank" className="card-link">IMDb Link</a>
                     <Link to={`/addReview/${movie?.id}`} className="card-link">Add Rating and Review</Link>
 
                 </div>
 
                 <YoutubeVideo embedId={trailerId} />
+
             </div>
 
     )
