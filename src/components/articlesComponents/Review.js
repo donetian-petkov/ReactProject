@@ -25,7 +25,7 @@ export const Review = (props) => {
                 <h5 className="card-title">{movie.title}</h5>
                 <h6 className="card-subtitle mb-2 text-muted">by {props.review?.username}</h6>
                 <p className="card-text">{props.review?.reviewText}</p>
-                <Rating name="read-only" value={props.review?.rating} readOnly />
+                <Rating name="read-only" value={props.review?.rating} max={10} readOnly />
                 <p></p>
                 <Link to={`/movie/${props.review?.movieId}`}>Go to Movie</Link>
             </div>
