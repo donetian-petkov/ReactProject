@@ -14,12 +14,40 @@ import { ProtectedRoute} from './components/authComponents/ProtectedRoute'
 import {Logout} from "./components/authComponents/Logout";
 import {Search} from "./components/searchComponent/Search";
 import {AddReview} from "./components/reviewComponents/AddReview";
-import {ReviewSection} from "./components/mainComponents/reviewComponents/ReviewSection";
 import {ReviewPage} from "./components/articlesComponents/ReviewPage";
+import {useEffect, useState} from "react";
+import * as reviewService from "./services/reviewService";
+import {ReviewContext} from "./contexts/reviewContext";
 
 function App() {
 
     const [auth, setAuth] = useLocalStorage('auth', {});
+
+    const [reviews, setReviews] = useState([]);
+
+    useEffect(() => {
+
+        reviewService.getAllReviews()
+            .then(results => {
+                for (const object of results) {
+                    // Access the Parse Object attributes using the .GET method
+                    const reviewId = object.get('objectId');
+                    const reviewText = object.get('reviewText');
+                    const rating = object.get('rating');
+                    const movieId = object.get('movieId');
+                    const createdAt = object.get('createdAt');
+                    const username = object.get('username');
+
+                    const review = {reviewId, reviewText , rating, movieId, createdAt, username};
+
+                    setReviews(prevState => ([
+                        ...prevState,
+                        review
+                    ]));
+                }
+            });
+
+    },[])
 
     const userLogin = (authData) => {
         setAuth(authData);
@@ -42,6 +70,7 @@ function App() {
 
                 <Header/>
 
+                <ReviewContext.Provider value={{reviews}}>
                 <Routes>
                     <Route path='/' element={<Main/>}/>
                     <Route path='/now_playing' element={<MoviesSection criteria='now_playing'/>}/>
@@ -52,13 +81,13 @@ function App() {
                     <Route path='/news' element={<NewsPage/>}/>
                     <Route path='/reviews' element={<ReviewPage/>}/>
                     <Route element={<ProtectedRoute user={auth} />}>
-                        <Route path="/comments" element={<h2>Comments</h2>} />
-                        <Route path="/ratings" element={<h2>Ratings</h2>} />
                         <Route path='/logout' element={<Logout/>}/>
                         <Route path='/addReview/:movieId' element={<AddReview/>}/>
+                        <Route path='/reviews/:username' element={<AddReview/>}/>
                     </Route>
                     <Route path='/search/:searchWords' element={<Search />} />
                 </Routes>
+                </ReviewContext.Provider>
                 <Footer/>
 
             </div>

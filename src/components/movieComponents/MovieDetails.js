@@ -1,11 +1,12 @@
 import {useParams} from 'react-router';
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import * as movieService from '../../services/movieService';
 import './MovieDetails.css';
 import {YoutubeVideo} from "./YoutubeVideo";
 import {Rating, styled, Typography} from "@mui/material";
 import {Link, useNavigate} from "react-router-dom";
 import {Review} from "../articlesComponents/Review";
+import {ReviewContext} from "../../contexts/reviewContext";
 
 
 
@@ -15,6 +16,7 @@ export const MovieDetails = (props) => {
     const {movieId} = useParams();
     const [movie, setMovie] = useState({});
     const [trailerId, setTrailerId] = useState('');
+    const { reviews } = useContext(ReviewContext);
 
     useEffect(() => {
 
@@ -58,6 +60,11 @@ export const MovieDetails = (props) => {
                 </div>
 
                 <YoutubeVideo embedId={trailerId} />
+                <p></p>
+
+                <div className="articleSection">
+                    {reviews.filter(x => x.movieId === movie.id.toString()).map(x => <Review key={x.reviewId} review={x}/>)}
+                </div>
 
             </div>
 

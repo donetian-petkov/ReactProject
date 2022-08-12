@@ -7,7 +7,7 @@ import {UserContext} from "../contexts/userContext";
 export const Header = () => {
 
     const navigate = useNavigate();
-    const { getIsLoggedIn } = useContext(UserContext);
+    const { user, getIsLoggedIn } = useContext(UserContext);
     const [searchWords, setSearchWords ] = useState('');
 
 
@@ -53,9 +53,7 @@ export const Header = () => {
                 {
                     getIsLoggedIn()
                         ? <ul>
-                            <li><Link to="/ratings">YOUR RATINGS</Link></li>
-                            <li><Link to="/comments">LATEST COMMENTS</Link></li>
-                            <li><Link to="/favourites">YOUR FAVOURITES</Link></li>
+                            <li><Link to={`/reviews/${user?.username}`}>YOUR REVIEWS</Link></li>
                         </ul>
                         : null
                 }

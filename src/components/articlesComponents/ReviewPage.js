@@ -1,36 +1,12 @@
-import {useEffect, useState} from "react";
-import * as reviewService from "../../services/reviewService";
+import {useContext, useEffect, useState} from "react";
 import './ReviewPage.css';
 import {Review} from "./Review";
+import {ReviewContext} from "../../contexts/reviewContext";
 
 export const ReviewPage = () => {
 
-    const [reviews, setReviews] = useState([]);
+    const {reviews} = useContext(ReviewContext)
 
-    useEffect(() => {
-
-        reviewService.getAllReviews()
-            .then(results => {
-                for (const object of results) {
-                    // Access the Parse Object attributes using the .GET method
-                    const reviewId = object.get('objectId');
-                    const reviewText = object.get('reviewText');
-                    const rating = object.get('rating');
-                    const movieId = object.get('movieId');
-                    const createdAt = object.get('createdAt');
-                    const username = object.get('username');
-
-                    const review = {reviewId, reviewText , rating, movieId, createdAt, username};
-
-                    setReviews(prevState => ([
-                        ...prevState,
-                        review
-                    ]));
-                }
-            });
-
-
-    },[]);
 
     return (
         <div id="news" >
