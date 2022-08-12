@@ -63,7 +63,7 @@ export const MovieDetails = (props) => {
                 <p></p>
 
                 <div className="articleSection">
-                    {reviews.filter(x => x.movieId === movie.id.toString()).map(x => <Review key={x.reviewId} review={x}/>)}
+                    {reviews.filter(x => x.movieId === movie?.id?.toString()).map(x => <Review key={x.reviewId} review={x}/>)}
                 </div>
 
             </div>

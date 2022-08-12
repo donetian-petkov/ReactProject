@@ -18,6 +18,7 @@ import {ReviewPage} from "./components/articlesComponents/ReviewPage";
 import {useEffect, useState} from "react";
 import * as reviewService from "./services/reviewService";
 import {ReviewContext} from "./contexts/reviewContext";
+import {PersonalReviews} from "./components/reviewComponents/PersonalReviews";
 
 function App() {
 
@@ -50,12 +51,14 @@ function App() {
     },[])
 
     const userLogin = (authData) => {
+
         setAuth(authData);
     };
 
     const userLogout = () => {
         setAuth({});
     };
+
 
     const getIsLoggedIn = () => {
 
@@ -83,7 +86,7 @@ function App() {
                     <Route element={<ProtectedRoute user={auth} />}>
                         <Route path='/logout' element={<Logout/>}/>
                         <Route path='/addReview/:movieId' element={<AddReview/>}/>
-                        <Route path='/reviews/:username' element={<AddReview/>}/>
+                        <Route path='/reviews/:username' element={<PersonalReviews/>}/>
                     </Route>
                     <Route path='/search/:searchWords' element={<Search />} />
                 </Routes>

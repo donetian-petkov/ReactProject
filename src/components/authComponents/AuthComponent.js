@@ -7,7 +7,7 @@ import {UserContext} from "../../contexts/userContext";
 export const AuthComponent = (props) => {
 
     const [authMode, setAuthMode] = useState("signin");
-    const { userLogin } = useContext(UserContext);
+    const { userLogin, user } = useContext(UserContext);
     const navigate = useNavigate();
 
     const [values, setValues] = useState({
@@ -22,13 +22,7 @@ export const AuthComponent = (props) => {
 
         if (authMode === 'signin') {
 
-            const {
-                username,
-                password,
-            } = Object.fromEntries(new FormData(e.target));
-
-
-            authService.login(username, password)
+            authService.login(values.username, values.password)
                 .then(authData => {
                     userLogin(authData);
                     navigate('/');
@@ -40,13 +34,7 @@ export const AuthComponent = (props) => {
 
         } else if (authMode === 'signup') {
 
-            const {
-                username,
-                email,
-                password,
-            } = Object.fromEntries(new FormData(e.target));
-
-            authService.register(username, email, password)
+            authService.register(values.username, values.email, values.password)
                 .then(authData => {
                     userLogin(authData);
                     navigate('/');

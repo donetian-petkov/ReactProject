@@ -25,11 +25,9 @@ export const AddReview = (props) => {
 
         e.preventDefault();
 
-        console.log(user);
+        const userId = user?.objectId;
 
-        const username = user.username;
-
-        reviewService.addReview({reviewText, rating, movieId, username})
+        reviewService.addReview({reviewText, rating, movieId, userId})
             .then(result => {
                 navigate(`/movie/${movieId}`);
             })
