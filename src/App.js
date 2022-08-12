@@ -14,7 +14,7 @@ import { ProtectedRoute} from './components/authComponents/ProtectedRoute'
 import {Logout} from "./components/authComponents/Logout";
 import {Search} from "./components/searchComponent/Search";
 import {AddReview} from "./components/reviewComponents/AddReview";
-import {ReviewPage} from "./components/articlesComponents/ReviewPage";
+import {ReviewPage} from "./components/reviewComponents/ReviewPage";
 import {useEffect, useState} from "react";
 import * as reviewService from "./services/reviewService";
 import {ReviewContext} from "./contexts/reviewContext";
@@ -86,7 +86,7 @@ function App() {
                     <Route element={<ProtectedRoute user={auth} />}>
                         <Route path='/logout' element={<Logout/>}/>
                         <Route path='/addReview/:movieId' element={<AddReview/>}/>
-                        <Route path='/reviews/:username' element={<PersonalReviews/>}/>
+                        <Route path='/reviews/:userId' element={<PersonalReviews/>}/>
                     </Route>
                     <Route path='/search/:searchWords' element={<Search />} />
                 </Routes>

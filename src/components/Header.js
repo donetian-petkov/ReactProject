@@ -19,9 +19,7 @@ export const Header = () => {
 
         e.preventDefault();
 
-        const {search_field} = Object.fromEntries(new FormData(e.target));
-
-        navigate(`/search/${search_field}`);
+        navigate(`/search/${searchWords}`);
 
     }
 
@@ -53,7 +51,7 @@ export const Header = () => {
                 {
                     getIsLoggedIn()
                         ? <ul>
-                            <li><Link to={`/reviews/${user?.username}`}>YOUR REVIEWS</Link></li>
+                            <li><Link to={`/reviews/${user?.objectId}`}>YOUR REVIEWS</Link></li>
                         </ul>
                         : null
                 }

@@ -46,6 +46,16 @@ export const getReviewsByUserId = async (userId) => {
 
     const query = new Parse.Query(Review);
 
+    console.log(`This is in Review Service + ${userId}`);
 
+    query.equalTo('userId', userId);
+
+    try {
+        const results = await query.find();
+
+        return results;
+    } catch (error) {
+        console.error('Error while fetching Review', error);
+    }
 
 }

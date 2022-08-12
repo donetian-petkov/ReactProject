@@ -3,9 +3,9 @@ import {useContext, useEffect, useState} from "react";
 import * as movieService from '../../services/movieService';
 import './MovieDetails.css';
 import {YoutubeVideo} from "./YoutubeVideo";
-import {Rating, styled, Typography} from "@mui/material";
-import {Link, useNavigate} from "react-router-dom";
-import {Review} from "../articlesComponents/Review";
+import {Rating, styled} from "@mui/material";
+import {Link} from "react-router-dom";
+import {Review} from "../reviewComponents/Review";
 import {ReviewContext} from "../../contexts/reviewContext";
 
 
