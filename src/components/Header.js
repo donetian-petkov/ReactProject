@@ -1,6 +1,4 @@
 import {Link, useNavigate} from "react-router-dom";
-import * as authService from '../services/authService'
-import {useLocalStorage} from "../hooks/userLocalStorage";
 import {useContext, useState} from "react";
 import {UserContext} from "../contexts/userContext";
 
@@ -23,9 +21,6 @@ export const Header = () => {
 
     }
 
-    console.log(user.objectId);
-
-
     return (
         <div id="header">
             <h1 id="logo"><Link to="/">HOME</Link></h1>
@@ -39,12 +34,7 @@ export const Header = () => {
                     {
                         !getIsLoggedIn()
                             ?  <li><Link to="/login">LOGIN/REGISTER</Link></li>
-                            : null
-                    }
-                    {
-                        getIsLoggedIn()
-                            ? <li><Link to="/logout">LOGOUT</Link></li>
-                            : null
+                            :  <li><Link to="/logout">LOGOUT</Link></li>
                     }
 
                 </ul>
@@ -53,7 +43,7 @@ export const Header = () => {
                 {
                     getIsLoggedIn()
                         ? <ul>
-                            <li><Link to={`/reviews/${user?.objectId}`}>MY REVIEWS</Link></li>
+                            <li><Link to={`/reviews/${user.id ? user.id : user.objectId}`}>MY REVIEWS</Link></li>
                         </ul>
                         : null
                 }

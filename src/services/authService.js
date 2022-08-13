@@ -18,7 +18,6 @@ export const register = async (username, email, password) => {
         let userResult = await user.signUp();
 
         return userResult;
-        console.log('User signed up', userResult);
     } catch (error) {
         console.error('Error while signing up user', error);
     }
@@ -45,7 +44,6 @@ export const logout = async () => {
 
         return true;
     } catch (error) {
-        console.log(`Error! ${error.message}`);
         return false;
     }
 };

@@ -26,7 +26,6 @@ export const AuthComponent = (props) => {
 
             authService.login(values.username, values.password)
                 .then(authData => {
-                    console.log(authData)
                     userLogin(authData);
                     navigate('/');
                 })
@@ -39,7 +38,6 @@ export const AuthComponent = (props) => {
 
             authService.register(values.username, values.email, values.password)
                 .then(authData => {
-                    console.log(authData);
                     userLogin(authData);
                     navigate('/');
                 })

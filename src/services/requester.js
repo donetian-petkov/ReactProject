@@ -31,7 +31,6 @@ const request = async (method, url, data, headers) => {
 
         return result;
     } catch (error) {
-        console.log(error);
     }
 };
 

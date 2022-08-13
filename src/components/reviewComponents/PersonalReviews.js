@@ -10,8 +10,6 @@ export const PersonalReviews = () => {
 
     useEffect(() => {
 
-        console.log(`This is in Personal Reviews + ${userId}`);
-
         reviewService.getReviewsByUserId(userId)
             .then(results => {
                 for (const object of results) {
