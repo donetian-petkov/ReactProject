@@ -1,4 +1,10 @@
-export const Register = ({submitHandler, changeHandler, values, changeAuthMode}) => {
+export const Register = ({submitHandler,
+                             changeHandler,
+                             values,
+                             changeAuthMode,
+                             errors,
+                             empty
+}) => {
     return (
         <form className="Auth-form" onSubmit={submitHandler}>
             <div className="Auth-form-content">
@@ -18,7 +24,12 @@ export const Register = ({submitHandler, changeHandler, values, changeAuthMode})
                         name='username'
                         value={values.username}
                         onChange={changeHandler}
+                        onBlur={(e) => empty(e)}
                     />
+                    {
+                        errors.username &&
+                        <p className="error" style={{color: "red"}}> The field can not be empty! </p>
+                    }
                 </div>
                 <div className="form-group mt-3">
                     <label>Email address</label>
@@ -29,7 +40,13 @@ export const Register = ({submitHandler, changeHandler, values, changeAuthMode})
                         name='email'
                         value={values.email}
                         onChange={changeHandler}
+                        onBlur={(e) => empty(e)}
                     />
+                    {
+                        errors.email &&
+                        <p className="error" style={{color: "red"}}> The field can not be empty! </p>
+                    }
+
                 </div>
                 <div className="form-group mt-3">
                     <label>Password</label>
@@ -40,7 +57,13 @@ export const Register = ({submitHandler, changeHandler, values, changeAuthMode})
                         name='password'
                         value={values.password}
                         onChange={changeHandler}
+                        onBlur={(e) => empty(e)}
                     />
+                    {
+                        errors.password &&
+                        <p className="error" style={{color: "red"}}> The field can not be empty! </p>
+                    }
+
                 </div>
                 <div className="d-grid gap-2 mt-3">
                     <button type="submit" className="btn btn-primary">

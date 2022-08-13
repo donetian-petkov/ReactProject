@@ -9,6 +9,9 @@ import {Register} from "./Register";
 export const AuthComponent = (props) => {
 
     const [authMode, setAuthMode] = useState("signin");
+    const [errors, setErrors] = useState({});
+
+
     const { userLogin } = useContext(UserContext);
     const navigate = useNavigate();
 
@@ -55,23 +58,44 @@ export const AuthComponent = (props) => {
         }));
     };
 
-
-
     const changeAuthMode = () => {
         setAuthMode(authMode === "signin" ? "signup" : "signin");
     };
 
+    const empty = (e) => {
+
+        setErrors(oldValues => ({
+            ...oldValues,
+            [e.target.name]: values[e.target.name].length === 0
+        }));
+
+    };
+
+
+
     if (authMode === "signin") {
         return (
             <div className="Auth-form-container">
-                <Login changeHandler={changeHandler} submitHandler={submitHandler} changeAuthMode={changeAuthMode} values={values} />
+                <Login changeHandler={changeHandler}
+                       submitHandler={submitHandler}
+                       changeAuthMode={changeAuthMode}
+                       values={values}
+                       errors={errors}
+                       empty={empty}
+                />
             </div>
         )
     }
 
     return (
         <div className="Auth-form-container">
-            <Register changeHandler={changeHandler} submitHandler={submitHandler} changeAuthMode={changeAuthMode} values={values} />
+            <Register changeHandler={changeHandler}
+                      submitHandler={submitHandler}
+                      changeAuthMode={changeAuthMode}
+                      values={values}
+                      errors={errors}
+                      empty={empty}
+            />
         </div>
     )
 
