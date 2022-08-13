@@ -81,7 +81,7 @@ export const AddReview = (props) => {
                 </textarea>
             </div>
             <p></p>
-            <button type="button" className="btn btn-secondary btn-sm">Create Review</button>
+            <button type="button" className="btn btn-warning btn-sm">Submit Review</button>
         </form>
     )
 

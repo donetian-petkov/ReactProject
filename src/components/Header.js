@@ -5,8 +5,8 @@ import {UserContext} from "../contexts/userContext";
 export const Header = () => {
 
     const navigate = useNavigate();
-    const { user, getIsLoggedIn } = useContext(UserContext);
-    const [searchWords, setSearchWords ] = useState('');
+    const {user, getIsLoggedIn} = useContext(UserContext);
+    const [searchWords, setSearchWords] = useState('');
 
 
     const changeHandler = (e) => {
@@ -26,6 +26,13 @@ export const Header = () => {
             <h1 id="logo"><Link to="/">HOME</Link></h1>
             <div id="navigation">
                 <ul>
+                    {
+                        getIsLoggedIn()
+                            ?
+                            <li><Link to={`/user/${user.id ? user.id : user.objectId}`}> WELCOME, {user.username}</Link>
+                            </li>
+                            : null
+                    }
                     <li><Link to="/">HOME</Link></li>
                     <li><Link to="/now_playing">IN THEATERS</Link></li>
                     <li><Link to="/upcoming">COMING SOON</Link></li>
@@ -33,18 +40,22 @@ export const Header = () => {
                     <li><Link to="/news">NEWS</Link></li>
                     {
                         !getIsLoggedIn()
-                            ?  <li><Link to="/login">LOGIN/REGISTER</Link></li>
-                            :  <li><Link to="/logout">LOGOUT</Link></li>
+                            ? <li><Link to="/login">LOGIN / REGISTER</Link></li>
+                            : <li><Link to="/logout">LOGOUT</Link></li>
                     }
 
                 </ul>
             </div>
-            <div id="sub-navigation">
+            <div id="sub-navigation" style={{display: 'flex'}}>
                 {
                     getIsLoggedIn()
-                        ? <ul>
-                            <li><Link to={`/reviews/${user.id ? user.id : user.objectId}`}>MY REVIEWS</Link></li>
-                        </ul>
+                        ?
+                        <Link
+                            to={`/reviews/${user.id ? user.id : user.objectId}`}
+                            style={{textDecoration: 'none'}}
+                        >
+                            MY REVIEWS
+                        </Link>
                         : null
                 }
                 <div id="search">

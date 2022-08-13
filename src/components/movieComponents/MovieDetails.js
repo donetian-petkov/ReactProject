@@ -54,8 +54,12 @@ export const MovieDetails = (props) => {
                     <p className="card-text"><small className="text-muted">Release Date: {movie?.release_date}</small>
                     </p>
                     <p className="card-text">{movie?.overview}</p>
-                    <a href={`https://www.imdb.com/title/${movie?.imdb_id}`} target="_blank" className="card-link">IMDb Link</a>
-                    <Link to={`/addReview/${movie?.id}`} className="card-link">Add Rating and Review</Link>
+                    <a href={`https://www.imdb.com/title/${movie?.imdb_id}`} target="_blank" className="card-link">
+                        <button type="button" className="btn btn-warning btn-sm">IMDb Link</button>
+                    </a>
+                    <Link to={`/addReview/${movie?.id}`} className="card-link">
+                        <button type="button" className="btn btn-warning btn-sm">Add Review</button>
+                    </Link>
 
                 </div>
 

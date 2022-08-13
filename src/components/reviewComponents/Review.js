@@ -1,13 +1,15 @@
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import * as movieService from "../../services/movieService";
 import {Rating} from "@mui/material";
+import {UserContext} from "../../contexts/userContext";
 
 export const Review = (props) => {
 
     const date = new Date(props.review?.createdAt).toString();
 
     const [movie, setMovie] = useState({});
+    const {getIsLoggedIn} = useContext(UserContext);
 
     useEffect(() => {
 
@@ -25,7 +27,7 @@ export const Review = (props) => {
                 <h5 className="card-title">{movie.title}</h5>
                 <h6 className="card-subtitle mb-3">by {props.review?.username}</h6>
                 <p className="card-text">{props.review?.reviewText}</p>
-                <Rating name="read-only" value={props.review?.rating} max={10} readOnly />
+                <Rating name="read-only" value={props.review?.rating} max={10} readOnly size='small'/>
                 <p></p>
                 <Link to={`/movie/${props.review?.movieId}`}>Go to Movie</Link>
             </div>
