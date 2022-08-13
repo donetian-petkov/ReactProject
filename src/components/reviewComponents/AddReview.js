@@ -40,8 +40,10 @@ export const AddReview = (props) => {
 
     return (
         <form onSubmit={reviewHandler}>
+            <p></p>
             <div className="form-group" style={{alignItems: 'center'}}>
-                <h2>Review for {movie?.title}</h2>
+                <h2>Review for "{movie?.title}"</h2>
+                <p></p>
                 <h5>Rating:</h5>
                 <select className="form-control"
                         name='rating'
@@ -64,6 +66,7 @@ export const AddReview = (props) => {
                     <option>10</option>
                 </select>
             </div>
+            <p></p>
             <div className="form-group">
                 <h5>Review:</h5>
                 <textarea className="form-control"
@@ -77,7 +80,8 @@ export const AddReview = (props) => {
                 >
                 </textarea>
             </div>
-            <button className="card-link">Submit Review</button>
+            <p></p>
+            <button type="button" className="btn btn-secondary btn-sm">Create Review</button>
         </form>
     )
 

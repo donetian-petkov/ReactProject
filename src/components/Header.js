@@ -19,7 +19,7 @@ export const Header = () => {
 
         navigate(`/search/${searchWords}`);
 
-    }
+    };
 
     return (
         <div id="header">

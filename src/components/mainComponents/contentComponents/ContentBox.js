@@ -1,13 +1,15 @@
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {Rating, styled} from "@mui/material";
-import {useState} from "react";
+import {useContext, useState} from "react";
+import {UserContext} from "../../../contexts/userContext";
 
 
 export const ContentBox = (props) => {
 
     const imageUrl = `https://image.tmdb.org/t/p/w500`;
-
     const [value, setValue] = useState(props.movie?.vote_average);
+    const {getIsLoggedIn} = useContext(UserContext);
+    const navigate = useNavigate();
 
     const StyledRating = styled(Rating)({
         '& .MuiRating-iconFilled': {
@@ -37,8 +39,12 @@ export const ContentBox = (props) => {
                 value={value}
                 onChange={(event, newValue) => {
                     setValue(newValue);
+                    navigate(`/addReview/${props.movie?.id}`)
+
                 }}
                 max={10}
+                readOnly={!getIsLoggedIn}
+                size="small"
             />
         </div>
     )
