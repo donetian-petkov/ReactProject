@@ -23,6 +23,8 @@ export const Header = () => {
 
     }
 
+    console.log(user.objectId);
+
 
     return (
         <div id="header">
@@ -51,7 +53,7 @@ export const Header = () => {
                 {
                     getIsLoggedIn()
                         ? <ul>
-                            <li><Link to={`/reviews/${user?.objectId}`}>YOUR REVIEWS</Link></li>
+                            <li><Link to={`/reviews/${user?.objectId}`}>MY REVIEWS</Link></li>
                         </ul>
                         : null
                 }

@@ -52,6 +52,8 @@ function App() {
 
     const userLogin = (authData) => {
 
+        console.log(authData);
+
         setAuth(authData);
     };
 

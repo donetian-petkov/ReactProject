@@ -16,6 +16,8 @@ export const register = async (username, email, password) => {
 
     try {
         let userResult = await user.signUp();
+
+        return userResult;
         console.log('User signed up', userResult);
     } catch (error) {
         console.error('Error while signing up user', error);
