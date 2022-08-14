@@ -19,11 +19,11 @@ import {useEffect, useState} from "react";
 import * as reviewService from "./services/reviewService";
 import {ReviewContext} from "./contexts/reviewContext";
 import {PersonalReviews} from "./components/reviewComponents/PersonalReviews";
+import {PageNotFound} from "./components/PageNotFound";
 
 function App() {
 
     const [auth, setAuth] = useLocalStorage('auth', {});
-
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
@@ -51,7 +51,6 @@ function App() {
     },[])
 
     const userLogin = (authData) => {
-
         setAuth(authData);
     };
 
@@ -89,6 +88,7 @@ function App() {
                         <Route path='/reviews/:userId' element={<PersonalReviews/>}/>
                     </Route>
                     <Route path='/search/:searchWords' element={<Search />} />
+                    <Route path="*" element={PageNotFound} />
                 </Routes>
                 </ReviewContext.Provider>
                 <Footer/>

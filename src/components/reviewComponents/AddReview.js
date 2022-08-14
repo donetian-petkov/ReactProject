@@ -23,6 +23,8 @@ export const AddReview = (props) => {
 
     const reviewHandler = (e) => {
 
+        console.log('review handler');
+
         e.preventDefault();
 
         const userId = user?.objectId ? user.objectId : user.id;
@@ -81,7 +83,7 @@ export const AddReview = (props) => {
                 </textarea>
             </div>
             <p></p>
-            <button type="button" className="btn btn-warning btn-sm">Submit Review</button>
+            <button type="button" className="btn btn-warning btn-sm" onClick={reviewHandler}>Submit Review</button>
         </form>
     )
 

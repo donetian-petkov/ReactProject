@@ -19,7 +19,7 @@ export const register = async (username, email, password) => {
 
         return userResult;
     } catch (error) {
-        console.error('Error while signing up user', error);
+        throw new Error('Could not Register');
     }
 
 };
@@ -30,7 +30,7 @@ export const login = async (username, password) => {
         // Pass the username and password to logIn function
        return await Parse.User.logIn(username, password);
     } catch (error) {
-        console.error('Error while logging in user', error);
+        throw new Error('Could not Login');
     }
 
 }

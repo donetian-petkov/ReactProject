@@ -33,7 +33,7 @@ export const AuthComponent = (props) => {
                     navigate('/');
                 })
                 .catch(() => {
-                    navigate('/404');
+                    navigate('/PageNotFound');
                 });
 
 
@@ -45,7 +45,7 @@ export const AuthComponent = (props) => {
                     navigate('/');
                 })
                 .catch(() => {
-                    navigate('/404');
+                    navigate('/PageNotFound');
                 });
         }
 

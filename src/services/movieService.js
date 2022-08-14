@@ -10,6 +10,6 @@ export const getMoviesByCriteria = (criteria, page= 1) => request.get(`${movieAp
 
 export const getMovieInfo = (id, additionalParameter='') => request.get(`${movieApiUrl}/${id}${additionalParameter}`,'', movieHeaders);
 
-export const getMovieByName = (name) => request.get(`${searchMovieUrl}/?query=${name}`, '', movieHeaders);
+export const getMovieByName = (name) => request.get(`${searchMovieUrl}/?query=${name}&api_key=9b2ec0f8b212bb00011891f0f4d2754c`);
 
 
