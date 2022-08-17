@@ -1,12 +1,11 @@
-import {useContext, useEffect, useState} from "react";
+import {useContext} from "react";
 import './ReviewPage.css';
 import {Review} from "./Review";
 import {ReviewContext} from "../../contexts/reviewContext";
 
 export const ReviewPage = () => {
 
-    const {reviews} = useContext(ReviewContext)
-
+    const {reviews} = useContext(ReviewContext);
 
     return (
         <div id="news" >

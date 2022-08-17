@@ -16,7 +16,7 @@ export const MovieDetails = (props) => {
     const {movieId} = useParams();
     const [movie, setMovie] = useState({});
     const [trailerId, setTrailerId] = useState('');
-    const {reviews} = useContext(ReviewContext);
+    const {reviews, getReviews} = useContext(ReviewContext);
     const {getIsLoggedIn} = useContext(UserContext);
 
     useEffect(() => {
@@ -27,7 +27,9 @@ export const MovieDetails = (props) => {
         movieService.getMovieInfo(movieId, '/videos')
             .then(videos => {
                 setTrailerId(videos.results[videos.results.length - 1].key);
-            })
+            });
+
+        getReviews();
     }, []);
 
 

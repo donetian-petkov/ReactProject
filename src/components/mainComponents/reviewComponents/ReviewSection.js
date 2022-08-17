@@ -1,5 +1,5 @@
 import {Title} from "../Title";
-import {useContext, useEffect, useState} from "react";
+import {useContext} from "react";
 import {ReviewBox} from "./ReviewBox";
 import {ReviewContext} from "../../../contexts/reviewContext";
 

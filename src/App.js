@@ -28,25 +28,7 @@ function App() {
 
     useEffect(() => {
 
-        reviewService.getAllReviews()
-            .then(results => {
-                for (const object of results) {
-                    // Access the Parse Object attributes using the .GET method
-                    const reviewId = object.get('objectId');
-                    const reviewText = object.get('reviewText');
-                    const rating = object.get('rating');
-                    const movieId = object.get('movieId');
-                    const createdAt = object.get('createdAt');
-                    const username = object.get('username');
-
-                    const review = {reviewId, reviewText , rating, movieId, createdAt, username};
-
-                    setReviews(prevState => ([
-                        ...prevState,
-                        review
-                    ]));
-                }
-            });
+        getReviews();
 
     },[])
 
@@ -65,6 +47,32 @@ function App() {
 
     };
 
+    const getReviews = () => {
+
+        reviewService.getAllReviews()
+            .then(results => {
+
+                const reviewArray = [];
+
+                for (const object of results) {
+                    // Access the Parse Object attributes using the .GET method
+                    const reviewId = object.get('objectId');
+                    const reviewText = object.get('reviewText');
+                    const rating = object.get('rating');
+                    const movieId = object.get('movieId');
+                    const createdAt = object.get('createdAt');
+                    const username = object.get('username');
+
+                    const review = {reviewId, reviewText , rating, movieId, createdAt, username};
+
+                    reviewArray.push(review);
+                }
+
+                setReviews(reviewArray);
+            });
+
+    }
+
     return (
 
         <UserContext.Provider value={{user: auth, userLogin, userLogout, getIsLoggedIn}}>
@@ -72,7 +80,7 @@ function App() {
 
                 <Header/>
 
-                <ReviewContext.Provider value={{reviews}}>
+                <ReviewContext.Provider value={{reviews, getReviews}}>
                 <Routes>
                     <Route path='/' element={<Main/>}/>
                     <Route path='/now_playing' element={<MoviesSection criteria='now_playing'/>}/>

@@ -23,12 +23,10 @@ export const AddReview = (props) => {
 
     const reviewHandler = (e) => {
 
-        console.log('review handler');
-
         e.preventDefault();
 
         const userId = user?.objectId ? user.objectId : user.id;
-        const username = user?.username
+        const username = user?.username;
 
         reviewService.addReview({reviewText, rating, movieId, userId, username})
             .then(result => {

@@ -1,15 +1,11 @@
 import {useContext, useEffect, useState} from "react";
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import * as movieService from "../../services/movieService";
 import {Rating} from "@mui/material";
-import {UserContext} from "../../contexts/userContext";
 
 export const Review = (props) => {
 
-    const date = new Date(props.review?.createdAt).toString();
-
     const [movie, setMovie] = useState({});
-    const {getIsLoggedIn} = useContext(UserContext);
 
     useEffect(() => {
 
