@@ -2,8 +2,6 @@
   background-color: white;
 }
 
-
-
 label {
   font-size: 16px;
   font-weight: 600;
@@ -366,28 +364,6 @@ h1#logo a {
 .content a {
   font-size:13px;
 }
-#footer {
-  padding:15px 0 0 0;
-  font-size:13px;
-}
-#footer, #footer a {
-  color:#9c9c9c;
-  text-decoration:none;
-}
-#footer a:hover {
-  text-decoration:none;
-}
-#footer p {
-  margin:0;
-  padding:0 0 11px 0;
-  line-height:normal;
-  white-space:nowrap;
-}
-#footer .lf {
-  float:left;
-}
-#footer .rf {
-  float:right;
-}
+
 
 
