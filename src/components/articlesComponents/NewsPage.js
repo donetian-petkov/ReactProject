@@ -1,5 +1,4 @@
 import {useEffect, useState} from "react";
-import * as movieService from "../../services/movieService";
 import * as newsService from "../../services/newsService";
 
 import {Article} from "./Article";
@@ -13,7 +12,7 @@ export const NewsPage = () => {
 
         newsService.getNews('Movie')
             .then(result => {
-                setArticles(result.articles);
+                setArticles(result.data);
             });
 
     },[]);
