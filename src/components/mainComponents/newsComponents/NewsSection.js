@@ -13,7 +13,7 @@ export const NewsSection = () => {
 
         newsService.getNews('Movie')
             .then(result => {
-                setNews(result.articles);
+                setNews(result.data);
             });
 
     },[]);

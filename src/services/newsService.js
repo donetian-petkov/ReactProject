@@ -1,7 +1,6 @@
 import * as request from "./requester";
 
-const newsUrl = 'https://newsapi.org/v2/top-headlines';
-const apiKey = '71f6998c2a24498281f3a51494ab3027'
+const newsUrl = 'http://api.mediastack.com/v1/news';
+const apiKey = '381e482d909a019084c91c5eccc19ae7'
 
-
-export const getNews = (criteria) => request.get(`${newsUrl}?q=${criteria}&apiKey=${apiKey}`,'', {});
+export const getNews = (criteria) => request.get(`${newsUrl}?access_key=${apiKey}&search=${criteria}&countries=us&keywords=${criteria}`,'', {});
