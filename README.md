@@ -16,5 +16,3 @@ A website, which shows movies and movie-related news. You can register and login
 ## Usage
 
 You may view the top movies, the latest movie-related news, create an account and rate movies.
-
-## Credits: used API - NewsCatcher News API (newscatcherapi.com)
